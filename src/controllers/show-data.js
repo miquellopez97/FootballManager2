@@ -1716,10 +1716,36 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
         `<div class="player">
         <img src=${oPlayer.player.photo}>
         <div class="display-player">${oPlayer.player.name}</div>
-        <div class="favorite"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
+        <div class="favorite" onClick="setFavourite(${oPlayer.player.id})"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
         </div>`;
         });
+
         return aHtml
+    }
+
+    setFavourite = (sPlayerId) => {
+      let aoFavouritePlayers = JSON.parse(localStorage.getItem('favouritePlayers'))
+      if(!aoFavouritePlayers) {
+        aoFavouritePlayers = []
+      }
+      if(aoFavouritePlayers.length > 0){
+        let bValidPlayer = true;
+        aoFavouritePlayers.map((oPlayerFav, i)=>{
+          if(bValidPlayer && oPlayerFav.id === sPlayerId){
+            bValidPlayer = false
+            //TODO: Si es false, habrá que quitar el player
+            
+            localStorage.setItem('favouritePlayers', JSON.stringify(aoFavouritePlayers))
+          }
+        });
+        if(bValidPlayer){
+          aoFavouritePlayers.push(sPlayerId)
+          localStorage.setItem('favouritePlayers', JSON.stringify(aoFavouritePlayers))
+        }
+      }else{
+        aoFavouritePlayers.push(sPlayerId)
+        localStorage.setItem('favouritePlayers', JSON.stringify(aoFavouritePlayers))
+      }
     }
 
 
