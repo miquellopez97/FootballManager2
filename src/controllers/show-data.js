@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
             }
           }
         ]
-      };
+    };
 
     let oPlayers = {
       "get": "players",
@@ -1686,35 +1686,40 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
         // document.getElementById('teamColumn').insertAdjacentHTML('afterbegin',`<div class="team"><img src=${oTeams.response[1].team.logo}><div class="display-team">${oTeams.response[1].team.name}</div></div>`);
     }
     printCardTeam = (oTeams) => {
-      var aHtml = []
-      oTeams.response.map((oTeam,index)=>{
+        var aHtml = []
+        oTeams.response.map((oTeam,index)=>{
         aHtml[index] =  `<div class="team" onClick="onTeamSelect(${oTeam.team.id})"}><img src=${oTeam.team.logo}><div class="display-team">${oTeam.team.name}</div></div>`;
-      });
-      return aHtml
+        });
+        return aHtml
     }
 
     this.printTeam(oTeams);
 
     onTeamSelect = async (sIdTeam) => {
-      if(sIdTeam){
+        if(sIdTeam){
         // await fetch("https://v3.football.api-sports.io/players?team="+ sIdTeam + "&league=140&season=2020", requestOptions)
         // .then(response => response.text())
         // .then(result => console.log(result))
         //  .catch(error => console.log('error', error));
         this.printPlayers(oPlayers)
-      }
+        }
     }
 
     printPlayers = (oPlayers) => {
-      document.getElementById('playerColumn').insertAdjacentHTML('afterbegin',`<div>${this.printCardPlayer(oPlayers)}</div>`)
+        document.getElementById('playerColumn').insertAdjacentHTML('afterbegin',`<div>${this.printCardPlayer(oPlayers)}</div>`)
     }
 
     printCardPlayer = (oPlayers) => {
-      var aHtml = []
-      oPlayers.response.map((oPlayer,index)=>{
-        aHtml[index] =  `<div class="player"><img src=${oPlayer.player.photo}><div class="display-player">${oPlayer.player.name}</div></div>`;
-      });
-      return aHtml
+        var aHtml = []
+        oPlayers.response.map((oPlayer,index)=>{
+        aHtml[index] =  
+        `<div class="player">
+        <img src=${oPlayer.player.photo}>
+        <div class="display-player">${oPlayer.player.name}</div>
+        <div class="favorite"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
+        </div>`;
+        });
+        return aHtml
     }
 
 
