@@ -1,4 +1,11 @@
-<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Register</title><style>* {
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register</title>
+    <style>
+        * {
             font-family: "Dosis", sans-serif;
         }
         
@@ -97,4 +104,42 @@
         .Nav-text>a:hover {
             background-color: black;
             color: white;
-        }</style><script defer="defer" src="js/bundle.js"></script></head><body><nav><div class="Nav-Title">Football Manager</div><div class="Nav-text"><a href="index.html">Register</a> <a href="my-team.html">My team</a> <a href="show-data.html">Data</a></div></nav><form><div class="container"><h1>Register</h1><label for="email"><b>Email</b></label> <input placeholder="Enter Email" name="email" id="email" required/> <label for="user-name"><b>User Name</b></label> <input placeholder="User Name" name="user-name" id="user-name" required/> <label for="name"><b>Name</b></label> <input placeholder="Enter Name" name="name" id="name" required/> <label for="surname"><b>Surname</b></label> <input placeholder="Enter Surname" name="surname" id="surname" required/><hr/><button type="submit" class="registerbtn">Register</button></div></form></body></html>
+        }
+    </style>
+<script defer src="./js/index2.bundle.js"></script></head>
+
+<body>
+    <nav>
+        <div class="Nav-Title">Football Manager</div>
+        <div class="Nav-text">
+            <a href="index.html">Register</a>
+            <a href="my-team.html">My team</a>
+            <a href="show-data.html">Data</a>
+        </div>
+    </nav>
+
+    <form>
+        <div class="container">
+            <h1>Register</h1>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="email" required />
+
+            <label for="user-name"><b>User Name</b></label>
+            <input type="text" placeholder="User Name" name="user-name" id="user-name" required />
+
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" id="name" required />
+
+            <label for="surname"><b>Surname</b></label>
+            <input type="text" placeholder="Enter Surname" name="surname" id="surname" required />
+            <hr />
+
+            <button type="submit" class="registerbtn">Register</button>
+        </div>
+    </form>
+    
+    <script src="/src/controllers/index.js"></script>
+</body>
+
+</html>

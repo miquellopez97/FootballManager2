@@ -1,3 +1,5 @@
+import setUserInfo from '../model/modelHandler';
+
 validateRegister = (oParams)=>{
     let bValid;
     const vName = /^[A-Za-z ]+$/;
@@ -26,5 +28,12 @@ document.addEventListener('submit', (oEvent) => {
         sUserName: document.getElementById('user-name').value,
         sName: document.getElementById('name').value,
         sSurname: document.getElementById('surname').value,
+    }
+
+    if(this.validateRegister(oParams)){
+        const result = myrequest(sEmail, sPassword);
+        setUserInfo(oParams);
+    }else{
+        //Printar error de incorrect password
     }
 })
