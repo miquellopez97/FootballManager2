@@ -1,5 +1,3 @@
-import setUserInfo from '../model/modelHandler';
-
 validateRegister = (oParams)=>{
     let bValid;
     const vName = /^[A-Za-z ]+$/;
@@ -10,18 +8,17 @@ validateRegister = (oParams)=>{
         bValid = false;
     }
 
-
     return bValid;
+}
+
+setUserInfo = async (oParams) => {
+    var oResponse = await fetch("https://jsonplaceholder.typicode.com/users");
+    return oResponse;
 }
 
 document.addEventListener('submit', (oEvent) => {
 
     oEvent.preventDefault();
-
-    let sEmail = document.getElementById('email').value;
-    let sUserName = document.getElementById('user-name').value;
-    let sName = document.getElementById('name').value;
-    let sSurname = document.getElementById('surname').value;
 
     let oParams = {
         sEmail: document.getElementById('email').value,
@@ -29,10 +26,12 @@ document.addEventListener('submit', (oEvent) => {
         sName: document.getElementById('name').value,
         sSurname: document.getElementById('surname').value,
     }
-
-    if(this.validateRegister(oParams)){
-        const result = myrequest(sEmail, sPassword);
-        setUserInfo(oParams);
+    if(true){
+    // if(this.validateRegister(oParams)){
+        const result = this.setUserInfo(oParams);
+    if(result){
+        console.log(result);
+    }
     }else{
         //Printar error de incorrect password
     }
