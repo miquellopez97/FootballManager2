@@ -1680,20 +1680,14 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
     }
 
     printTeam = (oTeams) =>  {
-        document.getElementById('teamColumn').insertAdjacentHTML('afterbegin',`<div>${this.printCardTeam(oTeams)}</div>`)
-
-
-        // document.getElementById('teamColumn').insertAdjacentHTML('afterbegin',`<div class="team"><img src=${oTeams.response[1].team.logo}><div class="display-team">${oTeams.response[1].team.name}</div></div>`);
-    }
-    printCardTeam = (oTeams) => {
-        var aHtml = []
-        oTeams.response.map((oTeam,index)=>{
-        aHtml[index] =  `<div class="team" onClick="onTeamSelect(${oTeam.team.id})"}><img src=${oTeam.team.logo}><div class="display-team">${oTeam.team.name}</div></div>`;
-        });
-        return aHtml
+      for (let i = 0; i < oTeams.response.length; i++) {
+        document.getElementById('teamColumn').insertAdjacentHTML('beforebegin',`<div class="team" onClick="onTeamSelect(${oTeams.response[i].team.id})"}><img src=${oTeams.response[i].team.logo}><div class="display-team">${oTeams.response[i].team.name}</div></div>`);
+      }
     }
 
     this.printTeam(oTeams);
+
+    
 
     onTeamSelect = async (sIdTeam) => {
         if(sIdTeam){
@@ -1701,25 +1695,19 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
         // .then(response => response.text())
         // .then(result => console.log(result))
         //  .catch(error => console.log('error', error));
-        this.printPlayers(oPlayers)
+        this.printPlayers(oPlayers.response)
         }
     }
 
-    printPlayers = (oPlayers) => {
-        document.getElementById('playerColumn').insertAdjacentHTML('afterbegin',`<div>${this.printCardPlayer(oPlayers)}</div>`)
-    }
-
-    printCardPlayer = (oPlayers) => {
-        var aHtml = []
-        oPlayers.response.map((oPlayer,index)=>{
-        aHtml[index] =  
-        `<div class="player">
-        <img src=${oPlayer.player.photo} onClick="setFavourite(${oPlayer.player.id})">
-        <div class="display-player">${oPlayer.player.name}</div>
-        </div>`;
-        });
-
-        return aHtml
+    printPlayers = (aoPlayers) => {
+      for (let i = 0; i < aoPlayers.length; i++) {
+        document.getElementById('playerColumn').insertAdjacentHTML('beforebegin',`<div class="player">
+        <img src=${aoPlayers[i].player.photo} onClick="setFavourite(${aoPlayers[i].player.id})">
+        <div class="display-player">${aoPlayers[i].player.name}</div>
+        </div>`);
+        
+      }
+        
     }
 
     setFavourite = (sPlayerId) => {
