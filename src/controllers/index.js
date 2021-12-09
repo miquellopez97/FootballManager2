@@ -1,3 +1,5 @@
+
+
 validateRegister = (oParams)=>{
     let bValid = true;
     const vName = /^[A-Za-z ]+$/;
@@ -30,8 +32,8 @@ document.addEventListener('submit', async (oEvent) => {
         sName: document.getElementById('name').value,
         sSurname: document.getElementById('surname').value,
     }
-    if(this.validateRegister(oParams)){
-        const oResponse = await this.setUserInfo(oParams);
+    if(validateRegister(oParams)){
+        const oResponse = await setUserInfo(oParams);
         if(oResponse){
             window.location.href = "show-data.html";
         }else{

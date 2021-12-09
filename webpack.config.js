@@ -3,8 +3,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        index2: ['babel-polyfill', './src/controllers/index.js']
-//      index3:  ['babel-polyfill', './src/js/dashboard.js'],
+        index2: ['babel-polyfill', './src/controllers/index.js'],
+        index3:  ['babel-polyfill', './src/controllers/show-data.js'],
+        index4:  ['babel-polyfill', './src/controllers/my-team.js'],
     },
     output: {
     filename: './js/[name].bundle.js'
@@ -15,16 +16,17 @@ module.exports = {
         filename: 'index.html',
         template: './src/views/index.html',
         chunks: ['index2']
-    })
-    // new HtmlWebpackPlugin({
-    //     filename: 'dashboard.html',
-    //     template: './src/dashboard.html',
-    //     chunks: ['index3']
-    // }),
-    // new HtmlWebpackPlugin({
-    //     filename: 'mi-equipo.html',
-    //     template: './src/mi-equipo.html',
-    // }),
+    }),
+    new HtmlWebpackPlugin({
+        filename: 'show-data.html',
+        template: './src/views/show-data.html',
+        chunks: ['index3']
+    }),
+    new HtmlWebpackPlugin({
+        filename: 'my-team.html',
+        template: './src/views/my-team.html',
+        chunks: ['index4']
+    }),
     ],
     devServer: {
     static: './dist',

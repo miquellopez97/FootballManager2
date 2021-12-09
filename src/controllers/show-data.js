@@ -1681,11 +1681,13 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
 
     printTeam = (oTeams) =>  {
       for (let i = 0; i < oTeams.response.length; i++) {
-        document.getElementById('teamColumn').insertAdjacentHTML('beforebegin',`<div class="team" onClick="onTeamSelect(${oTeams.response[i].team.id})"}><img src=${oTeams.response[i].team.logo}><div class="display-team">${oTeams.response[i].team.name}</div></div>`);
+        document.getElementById('teamColumn').insertAdjacentHTML('beforebegin',`<div class="team" 
+        onClick="onTeamSelect(${oTeams.response[i].team.id})"}><img src=${oTeams.response[i].team.logo}>
+        <div class="display-team">${oTeams.response[i].team.name}</div></div>`);
       }
     }
 
-    this.printTeam(oTeams);
+    printTeam(oTeams);
 
     
 
@@ -1693,21 +1695,35 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
         if(sIdTeam){
         // await fetch("https://v3.football.api-sports.io/players?team="+ sIdTeam + "&league=140&season=2020", requestOptions)
         // .then(response => response.text())
-        // .then(result => console.log(result))
+        // .then(result => {
+        //   let aoParsedResponse = JSON.parse(result)
+        //   printPlayers(aoParsedResponse.response)
+        //   localStorage.setItem('currentTeam', JSON.stringify(aoParsedResponse.response))})
         //  .catch(error => console.log('error', error));
-        this.printPlayers(oPlayers.response)
+        printPlayers(oPlayers.response)
+        localStorage.setItem('currentTeam', JSON.stringify(oPlayers.response))
         }
     }
 
     printPlayers = (aoPlayers) => {
       for (let i = 0; i < aoPlayers.length; i++) {
         document.getElementById('playerColumn').insertAdjacentHTML('beforebegin',`<div class="player">
-        <img src=${aoPlayers[i].player.photo} onClick="setFavourite(${aoPlayers[i].player.id})">
+        <img src=${aoPlayers[i].player.photo} onClick="getInfoPlayer(${aoPlayers[i].player.id})">
         <div class="display-player">${aoPlayers[i].player.name}</div>
         </div>`);
-        
       }
         
+    }
+
+    getInfoPlayer = (nPlayerId) => {
+      let aoCurrentPlayers = JSON.parse(localStorage.getItem('currentTeam'))
+      aoCurrentPlayers.map((oPlayer)=>{
+        if(oPlayer.player.id === nPlayerId){
+          document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',`<div class="player"><img src=${oPlayer.player.photo}>
+          <div class="favorite"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
+          <div class="display-player">${oPlayer.player.name}, ${oPlayer.player.age}</div></div>`)
+        }
+      });
     }
 
     setFavourite = (sPlayerId) => {
