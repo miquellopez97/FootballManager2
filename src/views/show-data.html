@@ -109,7 +109,7 @@
 
         /* Pagina */
 
-        .teams, .favorite, .fav{
+        .teams, .fav{
             width: 25%;
             display: inline-block;
             vertical-align: top;
@@ -123,8 +123,8 @@
         }
 
         .favorite{
-            float: top;
-            width: 15%;
+            width: 4em;
+            float:right;
         }
 
         img{
@@ -138,7 +138,7 @@
             object-fit: cover;
         }
 
-        .display-team, .display-player{
+        .display-team{
             display: inline-block;
         }
     </style>
@@ -165,7 +165,11 @@
 
     <div class="fav" >
         <h2>Favoritos</h2>
-        <div id="favColumn"></div>
+        <div class="player">
+            <img src="https://media.api-sports.io/football/players/9925.png">
+        <div class="favorite"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
+        <div class="display-player">Matheus Fernandez, 33</div>
+        </div>
     </div>
     <script src="/src/controllers/show-data.js"></script>
 </body>

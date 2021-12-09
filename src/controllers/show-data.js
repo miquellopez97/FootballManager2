@@ -1714,9 +1714,8 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
         oPlayers.response.map((oPlayer,index)=>{
         aHtml[index] =  
         `<div class="player">
-        <img src=${oPlayer.player.photo}>
+        <img src=${oPlayer.player.photo} onClick="setFavourite(${oPlayer.player.id})">
         <div class="display-player">${oPlayer.player.name}</div>
-        <div class="favorite" onClick="setFavourite(${oPlayer.player.id})"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
         </div>`;
         });
 
