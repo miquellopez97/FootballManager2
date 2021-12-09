@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -106,39 +107,52 @@
             background-color: black;
             color: white;
         }
-
         /* Pagina */
-
-        .teams, .fav{
+        
+        .teams,
+        .fav {
             width: 25%;
-            display: inline-block;
             vertical-align: top;
         }
-
-        .players{
+        
+        .players {
             background-color: lightgray;
-            width: 25%;
-            display: inline-block;
+            width: 30%;
             vertical-align: top;
         }
-
-        .favorite{
-            width: 4em;
-            float:right;
+        
+        .player {
+            width: 40%;
         }
-
-        img{
+        
+        .favorite {
+            width: 4em;
+            float: right;
+        }
+        
+        img {
             width: 35%;
         }
-
-        .players > .player > img{
+        
+        .player>img {
             border-radius: 100%;
-            width: 6em;
-            height: 6em;
+            width: 4.5rem;
             object-fit: cover;
+            vertical-align: middle;
+            margin-bottom: 0.25em;
         }
-
-        .display-team{
+        
+        .players>.player:hover {
+            background-color: lightskyblue;
+            color: white;
+        }
+        
+        .display-team,
+        .display-player,
+        .player,
+        .players,
+        .teams,
+        .fav {
             display: inline-block;
         }
     </style>
@@ -152,25 +166,26 @@
             <a href="show-data.html">Data</a>
         </div>
     </nav>
-    <div class="teams" >
+    <div class="teams">
         <h2>Equipos</h2>
         <div id="teamColumn"></div>
 
     </div>
-    
-    <div class="players" >
+
+    <div class="players">
         <h2>Jugadores</h2>
         <div id="playerColumn"></div>
     </div>
 
-    <div class="fav" >
+    <div class="fav">
         <h2>Favoritos</h2>
         <div class="player">
             <img src="https://media.api-sports.io/football/players/9925.png">
-        <div class="favorite"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
-        <div class="display-player">Matheus Fernandez, 33</div>
+            <div class="favorite"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
+            <div class="display-player">Matheus Fernandez, 33</div>
         </div>
     </div>
     <script src="/src/controllers/show-data.js"></script>
 </body>
+
 </html>
