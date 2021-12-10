@@ -1709,19 +1709,18 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
       for (let i = 0; i < aoPlayers.length; i++) {
         document.getElementById('playerColumn').insertAdjacentHTML('beforebegin',`<div class="player">
         <img src=${aoPlayers[i].player.photo} onClick="getInfoPlayer(${aoPlayers[i].player.id})">
-        <div class="display-player">${aoPlayers[i].player.name}</div>
+        <div class="display-player">${aoPlayers[i].player.name}<br><div class="position">Midfielder</div></div>
         </div>`);
       }
-        
     }
 
     getInfoPlayer = (nPlayerId) => {
       let aoCurrentPlayers = JSON.parse(localStorage.getItem('currentTeam'))
       aoCurrentPlayers.map((oPlayer)=>{
         if(oPlayer.player.id === nPlayerId){
-          document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',`<div class="player"><img src=${oPlayer.player.photo}>
+          document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',`<div class="fav-player"><img src=${oPlayer.player.photo}>
           <div class="favorite"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
-          <div class="display-player">${oPlayer.player.name}, ${oPlayer.player.age}</div></div>`)
+          <div class="display-player">${oPlayer.player.name}<br>${oPlayer.player.age} años<br>Midfielder</div></div>`)
         }
       });
     }

@@ -109,27 +109,42 @@
         }
         /* Pagina */
         
+        .container {
+            padding: 1% 10%;
+        }
+
         .teams,
-        .fav {
-            width: 25%;
+        .fav,
+        .team {
+            width: 33%;
             vertical-align: top;
         }
-        
+
+        .position{
+            font-weight: bold;
+            font-size: 0.75em;
+        }
+
+        .team > img {
+            width: 5em;
+        }
+
+        .display-player,
+        .display-team {
+            vertical-align: middle;
+        }
+
         .players {
             background-color: lightgray;
-            width: 30%;
+            width: 33%;
             vertical-align: top;
         }
         
-        .player {
-            width: 40%;
+        .player{
+            width: 50%;
+            padding: 0em 0.5em;
         }
-        
-        .favorite {
-            width: 4em;
-            float: right;
-        }
-        
+
         img {
             width: 35%;
         }
@@ -146,15 +161,44 @@
             background-color: lightskyblue;
             color: white;
         }
+
+        h2{
+            text-align: center;
+        }
         
-        .display-team,
         .display-player,
         .player,
         .players,
+        .team,
         .teams,
         .fav {
             display: inline-block;
         }
+
+        .fav-player{
+            width: 100%;
+            font-size: 2em;
+        }
+
+        .favorite {
+            width: 10%;
+            position: absolute;
+            top: 20%;
+            right: 4%;
+        }
+        
+        .fav-player>img{
+            width: 100%;
+            padding: 0 2em;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+
+        .fav-player>.display-player{
+            width: 50%;
+            margin: 0 auto;
+        }
+
     </style>
 </head>
 
@@ -166,20 +210,22 @@
             <a href="show-data.html">Data</a>
         </div>
     </nav>
-    <div class="teams">
-        <h2>Equipos</h2>
-        <div id="teamColumn"></div>
-
-    </div>
-
-    <div class="players">
-        <h2>Jugadores</h2>
-        <div id="playerColumn"></div>
-    </div>
-
-    <div class="fav">
-        <h2>Favoritos</h2>
-        <div id="playerInfo"></div>
+    <div class="container">
+        <div class="teams">
+            <h2>Equipos</h2>
+            <div id="teamColumn"></div>
+    
+        </div>
+    
+        <div class="players">
+            <h2>Jugadores</h2>
+            <div id="playerColumn"></div>
+        </div>
+    
+        <div class="fav">
+            <h2>Favoritos</h2>
+            <div id="playerInfo"></div>
+        </div>
     </div>
 </body>
 
