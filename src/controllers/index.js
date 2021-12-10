@@ -1,26 +1,4 @@
-
-
-validateRegister = (oParams)=>{
-    let bValid = true;
-    const vName = /^[A-Za-z ]+$/;
-    const vMail = /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-
-
-    if(!vName.exec(oParams.sName) || !vMail.exec(oParams.sEmail)){
-        bValid = false;
-    }
-
-    return bValid;
-}
-
-setUserInfo = async (oParams) => {
-    var oResponse = await fetch("https://jsonplaceholder.typicode.com/users");
-    if(oResponse.status === 200){
-        return oResponse;
-    }else{
-        return false
-    }
-}
+import {setUserInfo} from '../model/modelHandler'
 
 document.addEventListener('submit', async (oEvent) => {
 
@@ -43,4 +21,17 @@ document.addEventListener('submit', async (oEvent) => {
         //Printar error de incorrect password
         console.log("Error!!1")
     }
-})
+});
+
+const validateRegister = (oParams)=>{
+    let bValid = true;
+    const vName = /^[A-Za-z ]+$/;
+    const vMail = /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
+
+    if(!vName.exec(oParams.sName) || !vMail.exec(oParams.sEmail)){
+        bValid = false;
+    }
+
+    return bValid;
+}
