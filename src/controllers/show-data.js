@@ -1709,7 +1709,7 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
       for (let i = 0; i < aoPlayers.length; i++) {
         document.getElementById('playerColumn').insertAdjacentHTML('beforebegin',`<div class="player">
         <img src=${aoPlayers[i].player.photo} onClick="getInfoPlayer(${aoPlayers[i].player.id})">
-        <div class="display-player">${aoPlayers[i].player.name}<br><div class="position">Midfielder</div></div>
+        <div class="display-player">${aoPlayers[i].player.name}<br><div class="position">${oPlayer.statistics[0].games.position}</div></div>
         </div>`);
       }
     }
