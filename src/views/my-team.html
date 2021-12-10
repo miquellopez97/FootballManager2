@@ -122,13 +122,19 @@
         }
 
         .board{
-            background-image: url("https://img.freepik.com/vector-gratis/campo-futbol-shock-jugar-futbol_68708-644.jpg?size=626&ext=jpg");
-            width: 60%;
+            background-image: url(https://img.freepik.com/vector-gratis/campo-futbol-shock-jugar-futbol_68708-644.jpg?size=626&ext=jpg);
+            width: 70%;
             height: 70%;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            padding: 0em 5em;
+            position: absolute;
+            padding: 2.5em;
+            z-index: 1;
+        }
+
+        .dragDiv{
+            z-index: 2;
         }
 
         .goalkeeper, .defenders, .midfielders, .attackers{
@@ -247,19 +253,19 @@
 
     <div class="board">
         <div class="dragDiv" id="goalkeeper">
-            
+            Hola
         </div>
 
         <div class="dragDiv" id="defenders">
-            
+            Hola2
         </div>
         
-        <div class="dragDiv" id="midfielders" width>
-            
+        <div class="dragDiv" id="midfielders">
+            Hola3
         </div>
 
         <div class="dragDiv" id="attackers">
-            
+            Hola4
         </div>
     </div>
 
