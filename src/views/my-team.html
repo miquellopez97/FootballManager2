@@ -115,7 +115,7 @@
 
         .players{
             background-color: lightgray;
-            width: 25%;
+            width: 35%;
             height: 700px;
             vertical-align: top;
             overflow: auto;
@@ -123,34 +123,49 @@
 
         .board{
             background-image: url(https://img.freepik.com/vector-gratis/campo-futbol-shock-jugar-futbol_68708-644.jpg?size=626&ext=jpg);
-            width: 70%;
-            height: 70%;
+            width: 60%;
+            height: 80%;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             position: absolute;
-            padding: 2.5em;
+            padding: 2em 10em;
             z-index: 1;
         }
 
-        .dragDiv{
+        .board > .dragDiv{
+            width: 20%;
+            height: 100%;
+            margin: 1em 1em;
             z-index: 2;
+            border: 0.2em dotted red;
         }
 
-        .goalkeeper, .defenders, .midfielders, .attackers{
+        .board > .dragDiv > .player > .display-player {
+            display: none;
+        }
+
+        .board > .dragDiv:hover{
+            background-color: rgba(255, 0, 0, 0.123);
+            border: 0.2em solid red;
+        }
+
+        #goalkeeper, #defenders, #midfielders, #attackers{
             width: 20%;
             margin: auto;
             vertical-align: middle;
-            margin: 0.25em;
+            margin: 0em 2em 0em 0em;
+            max-height: 100%;
+            display: inline-block;
         }
 
         /* Pop up */
 
         /* Style the Image Used to Trigger the Modal */
 #myImg {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .hide {
@@ -169,8 +184,8 @@
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
+    left: 0;
+    top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -180,58 +195,58 @@
 
 /* Modal Content (Image) */
 .modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
 #caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
 }
 
 /* Add Animation - Zoom in the Modal */
 .modal-content, #caption {
-  animation-name: zoom;
-  animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
 }
 
 @keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
+    from {transform:scale(0)}
+    to {transform:scale(1)}
 }
 
 /* The Close Button */
 .close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .close:hover,
 .close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
-  .modal-content {
-    width: 100%;
-  }
+    .modal-content {
+        width: 100%;
+    }
 }
     </style>
 </head>
@@ -253,21 +268,20 @@
 
     <div class="board">
         <div class="dragDiv" id="goalkeeper">
-            Hola
+            
         </div>
 
         <div class="dragDiv" id="defenders">
-            Hola2
+            
         </div>
         
         <div class="dragDiv" id="midfielders">
-            Hola3
+            
         </div>
 
         <div class="dragDiv" id="attackers">
-            Hola4
+            
         </div>
     </div>
-
 </body>
 </html>
