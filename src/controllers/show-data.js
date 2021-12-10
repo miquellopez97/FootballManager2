@@ -1720,7 +1720,7 @@ document.addEventListener('DOMContentLoaded', async (oEvent) => {
         if(oPlayer.player.id === nPlayerId){
           document.getElementById('playerInfo').insertAdjacentHTML('afterbegin',`<div class="fav-player"><img src=${oPlayer.player.photo}>
           <div class="favorite"><img src="https://cdn-icons-png.flaticon.com/512/929/929566.png"></div>
-          <div class="display-player">${oPlayer.player.name}<br>${oPlayer.player.age} años<br>Midfielder</div></div>`)
+          <div class="display-player">${oPlayer.player.name}<br>${oPlayer.player.age} años<br>${oPlayer.statistics[0].games.position}</div></div>`)
         }
       });
     }
