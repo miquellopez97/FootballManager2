@@ -99,11 +99,13 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
     );
     let bIsLocalStorageFav = false;
 
-    aoFavouritePlayers.map((oPlayer) => {
-      if(oPlayer.player.id === Number(sIdPlayer)){
-        bIsLocalStorageFav = true;
-      }
-    });
+    if(aoFavouritePlayers){
+      aoFavouritePlayers.map((oPlayer) => {
+        if(oPlayer.player.id === Number(sIdPlayer)){
+          bIsLocalStorageFav = true;
+        }
+      });
+    }
 
     return bIsLocalStorageFav
 
