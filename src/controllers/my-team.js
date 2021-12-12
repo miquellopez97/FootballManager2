@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
       "afterbegin",
       `<div class="player" style="border:none" draggable="true" id=${aoFavouritePlayers[i].player.id}>
           <img draggable="false" style="border:none" class="myImg" src=${aoFavouritePlayers[i].player.photo}>
-          <div draggable="false" style="border:none" class="display-player">${aoFavouritePlayers[i].player.name} - ${aoFavouritePlayers[i].statistics[0].games.position}</div>
+          <div draggable="false" style="border:none" class="display-player">${aoFavouritePlayers[i].player.name} <br> <p style="font-weight:bold">${aoFavouritePlayers[i].statistics[0].games.position}</p> </div>
         </div>`
     );
   }
