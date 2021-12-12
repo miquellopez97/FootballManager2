@@ -29,7 +29,7 @@ const validateRegister = (oParams)=>{
     let bValid = true;
     const vName = /^[A-Za-z ]+$/;
     const vMail = /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
-    const vPsw = /^[A-Za-z0-9]{5}$/;
+    const vPsw = /^([a-zA-Z0-9]{5,16})?$/;
     let errMsg='';
 
     if(!vName.exec(oParams.sName)){
@@ -41,7 +41,7 @@ const validateRegister = (oParams)=>{
     } if(!vPsw.exec(oParams.sPsw)) {
         errMsg += `ERROR en la contraseña\n`;
         bValid = false;
-    } if(oParams.sRPsw !== oParams.rPsw) {
+    } if(oParams.sRPsw !== oParams.sRPsw) {
         errMsg += `ERROR en la confirmación de contraseña\n`;
         bValid = false;
     }
