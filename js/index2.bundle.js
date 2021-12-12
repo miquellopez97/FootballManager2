@@ -13,9 +13,21 @@
 /*!**********************************!*\
   !*** ./src/controllers/index.js ***!
   \**********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\nvalidateRegister = function validateRegister(oParams) {\n  var bValid = true;\n  var vName = /^[A-Za-z ]+$/;\n  var vMail = /^\\w+([\\.\\+\\-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+$/;\n\n  if (!vName.exec(oParams.sName) || !vMail.exec(oParams.sEmail)) {\n    bValid = false;\n  }\n\n  return bValid;\n};\n\nsetUserInfo = /*#__PURE__*/function () {\n  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(oParams) {\n    var oResponse;\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.next = 2;\n            return fetch(\"https://jsonplaceholder.typicode.com/users\");\n\n          case 2:\n            oResponse = _context.sent;\n\n            if (!(oResponse.status === 200)) {\n              _context.next = 7;\n              break;\n            }\n\n            return _context.abrupt(\"return\", oResponse);\n\n          case 7:\n            return _context.abrupt(\"return\", false);\n\n          case 8:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee);\n  }));\n\n  return function setUserInfo(_x) {\n    return _ref.apply(this, arguments);\n  };\n}();\n\ndocument.addEventListener('submit', /*#__PURE__*/function () {\n  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(oEvent) {\n    var oParams, oResponse;\n    return regeneratorRuntime.wrap(function _callee2$(_context2) {\n      while (1) {\n        switch (_context2.prev = _context2.next) {\n          case 0:\n            oEvent.preventDefault();\n            oParams = {\n              sEmail: document.getElementById('email').value,\n              sUserName: document.getElementById('user-name').value,\n              sName: document.getElementById('name').value,\n              sSurname: document.getElementById('surname').value\n            };\n\n            if (!validateRegister(oParams)) {\n              _context2.next = 9;\n              break;\n            }\n\n            _context2.next = 5;\n            return setUserInfo(oParams);\n\n          case 5:\n            oResponse = _context2.sent;\n\n            if (oResponse) {\n              window.location.href = \"show-data.html\";\n            } else {}\n\n            _context2.next = 10;\n            break;\n\n          case 9:\n            //Printar error de incorrect password\n            console.log(\"Error!!1\");\n\n          case 10:\n          case \"end\":\n            return _context2.stop();\n        }\n      }\n    }, _callee2);\n  }));\n\n  return function (_x2) {\n    return _ref2.apply(this, arguments);\n  };\n}());\n\n//# sourceURL=webpack:///./src/controllers/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _model_modelHandler__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../model/modelHandler */ \"./src/model/modelHandler.js\");\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n\ndocument.addEventListener('submit', /*#__PURE__*/function () {\n  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(oEvent) {\n    var oParams, oResponse;\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            oEvent.preventDefault();\n            oParams = {\n              sEmail: document.getElementById('email').value,\n              sUserName: document.getElementById('user-name').value,\n              sName: document.getElementById('name').value,\n              sSurname: document.getElementById('surname').value\n            };\n\n            if (!validateRegister(oParams)) {\n              _context.next = 9;\n              break;\n            }\n\n            _context.next = 5;\n            return (0,_model_modelHandler__WEBPACK_IMPORTED_MODULE_0__.setUserInfo)(oParams);\n\n          case 5:\n            oResponse = _context.sent;\n\n            if (oResponse) {\n              window.location.href = \"show-data.html\";\n            } else {}\n\n            _context.next = 10;\n            break;\n\n          case 9:\n            //Printar error de incorrect password\n            console.log(\"Error!!1\");\n\n          case 10:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee);\n  }));\n\n  return function (_x) {\n    return _ref.apply(this, arguments);\n  };\n}());\n\nvar validateRegister = function validateRegister(oParams) {\n  var bValid = true;\n  var vName = /^[A-Za-z ]+$/;\n  var vMail = /^\\w+([\\.\\+\\-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+$/;\n\n  if (!vName.exec(oParams.sName) || !vMail.exec(oParams.sEmail)) {\n    bValid = false;\n  }\n\n  return bValid;\n};\n\n//# sourceURL=webpack:///./src/controllers/index.js?");
+
+/***/ }),
+
+/***/ "./src/model/modelHandler.js":
+/*!***********************************!*\
+  !*** ./src/model/modelHandler.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"setUserInfo\": () => (/* binding */ setUserInfo),\n/* harmony export */   \"getTeams\": () => (/* binding */ getTeams)\n/* harmony export */ });\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\nvar myHeaders = new Headers();\nmyHeaders.append(\"x-rapidapi-key\", \"e5fe48d63f247a7bea7161aed29b05fe\");\nmyHeaders.append(\"x-rapidapi-host\", \"v3.football.api-sports.io\");\nvar requestOptions = {\n  method: \"GET\",\n  headers: myHeaders,\n  redirect: \"follow\"\n};\nvar setUserInfo = /*#__PURE__*/function () {\n  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(oParams) {\n    var oResponse;\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.next = 2;\n            return fetch(\"https://jsonplaceholder.typicode.com/users\");\n\n          case 2:\n            oResponse = _context.sent;\n\n            if (!(oResponse.status === 200)) {\n              _context.next = 7;\n              break;\n            }\n\n            return _context.abrupt(\"return\", oResponse);\n\n          case 7:\n            return _context.abrupt(\"return\", false);\n\n          case 8:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee);\n  }));\n\n  return function setUserInfo(_x) {\n    return _ref.apply(this, arguments);\n  };\n}();\nvar getTeams = /*#__PURE__*/function () {\n  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(sIdTeam) {\n    return regeneratorRuntime.wrap(function _callee2$(_context2) {\n      while (1) {\n        switch (_context2.prev = _context2.next) {\n          case 0:\n            _context2.next = 2;\n            return fetch(\"https://v3.football.api-sports.io/players?team=\" + sIdTeam + \"&league=140&season=2020\", requestOptions).then(function (response) {\n              return response.text();\n            }).then(function (result) {\n              var aoParsedResponse = JSON.parse(result);\n              localStorage.setItem('currentTeam', JSON.stringify(aoParsedResponse.response));\n              return aoParsedResponse;\n            })[\"catch\"](function (error) {\n              return console.log('error', error);\n            });\n\n          case 2:\n          case \"end\":\n            return _context2.stop();\n        }\n      }\n    }, _callee2);\n  }));\n\n  return function getTeams(_x2) {\n    return _ref2.apply(this, arguments);\n  };\n}();\n\n//# sourceURL=webpack:///./src/model/modelHandler.js?");
 
 /***/ }),
 
@@ -3456,6 +3468,18 @@ eval("/**\n * Copyright (c) 2014, Facebook, Inc.\n * All rights reserved.\n *\n 
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -3466,6 +3490,22 @@ eval("/**\n * Copyright (c) 2014, Facebook, Inc.\n * All rights reserved.\n *\n 
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /************************************************************************/
