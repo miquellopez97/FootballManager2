@@ -97,10 +97,40 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
     let aoFavouritePlayers = JSON.parse(
       localStorage.getItem("favouritePlayers")
     );
+
+    let aoTitulares = JSON.parse(localStorage.getItem("titulares"));
+
     let bIsLocalStorageFav = false;
 
-    if(aoFavouritePlayers){
+    if(aoFavouritePlayers && aoFavouritePlayers.length > 0){
       aoFavouritePlayers.map((oPlayer) => {
+        if(oPlayer.player.id === Number(sIdPlayer)){
+          bIsLocalStorageFav = true;
+        }
+      });
+    }
+
+    if(aoTitulares){
+      
+      aoTitulares.goaalkeeper.map((oPlayer) => {
+        if(oPlayer.player.id === Number(sIdPlayer)){
+          bIsLocalStorageFav = true;
+        }
+      });
+
+      aoTitulares.defenders.map((oPlayer) => {
+        if(oPlayer.player.id === Number(sIdPlayer)){
+          bIsLocalStorageFav = true;
+        }
+      });
+
+      aoTitulares.midfielders.map((oPlayer) => {
+        if(oPlayer.player.id === Number(sIdPlayer)){
+          bIsLocalStorageFav = true;
+        }
+      });
+
+      aoTitulares.attackers.map((oPlayer) => {
         if(oPlayer.player.id === Number(sIdPlayer)){
           bIsLocalStorageFav = true;
         }
@@ -115,6 +145,8 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
     let aoFavouritePlayers = JSON.parse(
       localStorage.getItem("favouritePlayers")
     );
+
+    let aoTitulares = JSON.parse(localStorage.getItem("titulares"));
 
     let aoCurrentPlayers = JSON.parse(localStorage.getItem("currentTeam"));
     let oFavourtiePlayer
@@ -144,6 +176,42 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
           );
         }
       });
+
+      if(bValidPlayer && aoTitulares){
+        aoTitulares.goaalkeeper.map((oPlayer, i) => {
+          if(oPlayer.player.id === oFavourtiePlayer.player.id){
+            bValidPlayer = false;
+            aoTitulares.goaalkeeper.splice(i,j)
+          }
+        });
+
+        aoTitulares.defenders.map((oPlayer, i) => {
+          if(oPlayer.player.id === oFavourtiePlayer.player.id){
+            bValidPlayer = false;
+            aoTitulares.defenders.splice(i,1)
+          }
+        });
+
+        aoTitulares.midfielders.map((oPlayer, i) => {
+          if(oPlayer.player.id === oFavourtiePlayer.player.id){
+            bValidPlayer = false;
+            aoTitulares.midfielders.splice(i,1)
+          }
+        });
+
+        aoTitulares.attackers.map((oPlayer, i) => {
+          if(oPlayer.player.id === oFavourtiePlayer.player.id){
+            bValidPlayer = false;
+            aoTitulares.attackers.splice(i,1)
+          }
+        });
+
+        localStorage.setItem(
+          "titulares",
+          JSON.stringify(aoTitulares)
+        );
+      }
+
 
       if (bValidPlayer) {
         aoFavouritePlayers.push(oFavourtiePlayer);
