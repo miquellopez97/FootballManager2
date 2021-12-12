@@ -9,6 +9,8 @@ document.addEventListener('submit', async (oEvent) => {
         sUserName: document.getElementById('user-name').value,
         sName: document.getElementById('name').value,
         sSurname: document.getElementById('surname').value,
+        sPsw: document.getElementById('psw').value,
+        sRPsw: document.getElementById('rPsw').value
     }
     if(validateRegister(oParams)){
         const oResponse = await setUserInfo(oParams);
@@ -27,10 +29,25 @@ const validateRegister = (oParams)=>{
     let bValid = true;
     const vName = /^[A-Za-z ]+$/;
     const vMail = /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+    const vPsw = /^[A-Za-z0-9]{5}$/;
+    let errMsg='';
 
-
-    if(!vName.exec(oParams.sName) || !vMail.exec(oParams.sEmail)){
+    if(!vName.exec(oParams.sName)){
+        errMsg += `ERROR en el nombre\n`;
         bValid = false;
+    } if(!vMail.exec(oParams.sEmail)) {
+        errMsg += `ERROR en el email\n`;
+        bValid = false;
+    } if(!vPsw.exec(oParams.sPsw)) {
+        errMsg += `ERROR en la contraseña\n`;
+        bValid = false;
+    } if(oParams.sRPsw !== oParams.rPsw) {
+        errMsg += `ERROR en la confirmación de contraseña\n`;
+        bValid = false;
+    }
+
+    if (errMsg.length>0) {
+        alert(errMsg);
     }
 
     return bValid;
