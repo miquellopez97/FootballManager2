@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
     document.getElementById("playerColumnTeam").insertAdjacentHTML(
       "afterbegin",
       `<div class="player" style="border:none" draggable="true" id=${aoFavouritePlayers[i].player.id}>
-          <img draggable="false" style="border:none" id="myImg" src=${aoFavouritePlayers[i].player.photo}>
+          <img draggable="false" style="border:none" class="myImg" src=${aoFavouritePlayers[i].player.photo}>
           <div draggable="false" style="border:none" class="display-player">${aoFavouritePlayers[i].player.name}</div>
         </div>`
     );
