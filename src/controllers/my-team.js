@@ -65,11 +65,10 @@ function dragStart(oEvent) {
 function dragEnd(oEvent) {
   oEvent.dataTransfer.setData("text/plain", oEvent.target.id);
   setTimeout(() => {
-    if(oEvent.target.classList){
+    if(oEvent.target && oEvent.target.classList){
       oEvent.target.classList.remove("hide");
     }
-  
-  }, 0);
+    }, 0);
 }
 
 function dragEnter(e) {
@@ -87,22 +86,24 @@ function dragEnter(e) {
   }
 
   function drop(e) {
-    if((e.target.parentElement.className === "player" &&  e.target.parentElement.parentElement.id === "playerColumnTeam") || e.target.className === "player"){
+    if((e.target.parentElement.className === "player" &&  e.target.parentElement.parentElement.id === "playerColumnTeam") || (e.target.className === "player")){
       renderPlayers()
       rendertTitulares()
     }else if (e.target.className.includes("titulares") || (e.target.parentElement.className === "player" && e.target.parentElement.parentElement.className.includes("titulares")) || (e.target.className === "player" && e.target.parentElement.className.includes("titulares"))){
       let id = e.dataTransfer.getData('text/plain');
       setNewStarter(Number(id), e.target)
       e.target.classList.remove('drag-over');
-      if(id && id.length > 0){
-        const draggable = document.getElementById(id);
+      // if(id && id.length > 0){
+      //   const draggable = document.getElementById(id);
 
-      // add it to the drop target
-      e.target.appendChild(draggable);
+      // // add it to the drop target
+      // e.target.appendChild(draggable);
 
-      // display the draggable element
-      draggable.classList.remove('hide');
-      }
+      // // display the draggable element
+      // draggable.classList.remove('hide');
+      // }
+      renderPlayers()
+      rendertTitulares()
       
     }else{
       e.target.classList.remove('drag-over');
@@ -116,7 +117,7 @@ function dragEnter(e) {
       draggable.classList.remove('hide');
       setNewFavouritePlayer(Number(id))
       }
-    
+      location.reload();
   }
 
   function renderPlayers() {
@@ -139,52 +140,51 @@ function dragEnter(e) {
       }
   }
 
-  function rendertTitulares(bModify){
+  function rendertTitulares(){
     let aoTitulares = JSON.parse(localStorage.getItem("titulares"));
     let divTitularGoalkeeper = document.getElementById("goalkeeper")
     let divTitularDefender = document.getElementById("defenders")
     let divTitularMidfilder = document.getElementById("midfielders")
     let divTitularAttacker = document.getElementById("attackers")
+    let bModify  = true
 
-    
-      if(aoTitulares.goaalkeeper.length > 0){
-        if(bModify){
-          while(divTitularGoalkeeper.firstChild){
-            divTitularGoalkeeper.removeChild(divTitularGoalkeeper.firstChild);
+      if (fullTeam(aoTitulares)){
+        if(aoTitulares.goaalkeeper.length > 0 ){
+          if(bModify){
+            while(divTitularGoalkeeper.firstChild){
+              divTitularGoalkeeper.removeChild(divTitularGoalkeeper.firstChild);
+            }
           }
+          
+          renderTitularPlayer(aoTitulares.goaalkeeper, divTitularGoalkeeper)
         }
-        
-        renderTitularPlayer(aoTitulares.goaalkeeper, divTitularGoalkeeper)
-      }
-      if(aoTitulares.defenders.length > 0){
-        if(bModify){
-          while(divTitularDefender.firstChild){
-            divTitularDefender.removeChild(divTitularDefender.firstChild);
+        if(aoTitulares.defenders.length > 0){
+          if(bModify){
+            while(divTitularDefender.firstChild){
+              divTitularDefender.removeChild(divTitularDefender.firstChild);
+            }
           }
+          
+          renderTitularPlayer(aoTitulares.defenders, divTitularDefender)
         }
-        
-        renderTitularPlayer(aoTitulares.defenders, divTitularDefender)
-      }
-      if(aoTitulares.midfielders.length > 0){
-        if(bModify){
-          while(divTitularMidfilder.firstChild){
-            divTitularMidfilder.removeChild(divTitularMidfilder.firstChild);
+        if(aoTitulares.midfielders.length > 0){
+          if(bModify){
+            while(divTitularMidfilder.firstChild){
+              divTitularMidfilder.removeChild(divTitularMidfilder.firstChild);
+            }
           }
+          renderTitularPlayer(aoTitulares.midfielders, divTitularMidfilder)
         }
-        renderTitularPlayer(aoTitulares.midfielders, divTitularMidfilder)
-      }
-      if(aoTitulares.attackers.length > 0){
-        if(bModify){
-          while(divTitularAttacker.firstChild){
-            divTitularAttacker.removeChild(divTitularAttacker.firstChild);
+        if(aoTitulares.attackers.length > 0){
+          if(bModify){
+            while(divTitularAttacker.firstChild){
+              divTitularAttacker.removeChild(divTitularAttacker.firstChild);
+            }
           }
+          
+          renderTitularPlayer(aoTitulares.attackers, divTitularAttacker) 
         }
-        
-        renderTitularPlayer(aoTitulares.attackers, divTitularAttacker) 
       }
-      
-    
-
   }
 
   function renderTitularPlayer (aoPlayers, divToRender) {
@@ -202,7 +202,8 @@ function dragEnter(e) {
 
   function setNewStarter(nIdPlayer, aoTarget){
     let aoFavouritePlayers = JSON.parse(localStorage.getItem("favouritePlayers"));
-
+    let aoTitulares = JSON.parse(localStorage.getItem("titulares"));
+    if (fullTeam(aoTitulares)) {
     if(aoFavouritePlayers && aoFavouritePlayers.length > 0){
       for (let i = 0; i < aoFavouritePlayers.length; i++) {
         if(aoFavouritePlayers[i].player.id === nIdPlayer){
@@ -216,6 +217,7 @@ function dragEnter(e) {
       }
     }
   }
+  }
 
 
   function setPositionPlayer(oPlayer, aoTarget) {
@@ -224,8 +226,8 @@ function dragEnter(e) {
     let sDropPosition = setDropPosition(aoTarget)
 
     let oPlayerChangeDrop = setDropPlayer(aoTarget)
-
-    switch (sDropPosition) {
+    if (fullTeam(aoTitulares)) {
+      switch (sDropPosition) {
       case "Goalkeeper":
         if(aoTitulares.goaalkeeper.length < 1){
           aoTitulares.goaalkeeper.push(oPlayer);
@@ -293,7 +295,8 @@ function dragEnter(e) {
 
       default:
         break;
-    }
+    }}
+    
   }
 
   function setDataStarter () {
@@ -345,6 +348,7 @@ function dragEnter(e) {
       if(idPlayerTarget){
         let oTargetPlayer;
         let aoTitulares = JSON.parse(localStorage.getItem("titulares"));
+        if (fullTeam(aoTitulares)){
         aoTitulares.goaalkeeper.map((oPlayer)=>{
           if(oPlayer.player.id === idPlayerTarget){
             oTargetPlayer = oPlayer;
@@ -370,6 +374,9 @@ function dragEnter(e) {
         })
 
         return oTargetPlayer
+      }else {
+        return false
+      }
 
 
       }
@@ -403,7 +410,7 @@ function dragEnter(e) {
     localStorage.setItem("titulares", JSON.stringify(aoTitulares))
 
     renderPlayers()
-    rendertTitulares(true)
+    rendertTitulares()
   }
 
   function setNewFavouritePlayer(nIdNumber) {
@@ -417,6 +424,7 @@ function dragEnter(e) {
 
     if(!bValid){
       let aoTitulares = JSON.parse(localStorage.getItem("titulares"));
+      if(fullTeam(aoTitulares)){
       for (let j = 0; j < aoTitulares.goaalkeeper.length; j++) {
         if(aoTitulares.goaalkeeper[j].player.id === nIdNumber){
           aoFavouritePlayers.push(aoTitulares.goaalkeeper[j])
@@ -447,5 +455,16 @@ function dragEnter(e) {
 
       localStorage.setItem("favouritePlayers", JSON.stringify(aoFavouritePlayers))
       localStorage.setItem("titulares", JSON.stringify(aoTitulares))
+    }
+    }
+  }
+
+  function fullTeam (aoPlayersTitulars) {
+    let nSumaTotal = aoPlayersTitulars.goaalkeeper.length + aoPlayersTitulars.defenders.length + aoPlayersTitulars.midfielders.length + aoPlayersTitulars.attackers.length;
+    if (nSumaTotal > 11) {
+      alert("Your Team is full")
+      return false;
+    } else {
+      return true;
     }
   }

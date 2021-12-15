@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
         aoTitulares.goaalkeeper.map((oPlayer, i) => {
           if(oPlayer.player.id === oFavourtiePlayer.player.id){
             bValidPlayer = false;
-            aoTitulares.goaalkeeper.splice(i,j)
+            aoTitulares.goaalkeeper.splice(i,1)
           }
         });
 
