@@ -1,324 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      * {
-        font-family: "Dosis", sans-serif;
-      }
+</head>
 
-      * {
-        box-sizing: border-box;
-      }
-      /* Add padding to containers */
-
-      .container {
-        padding: 16px;
-        background-color: white;
-      }
-
-      form {
-        padding: 5% 30%;
-      }
-      /* Full-width input fields */
-
-      input[type="text"],
-      input[type="password"] {
-        width: 100%;
-        padding: 1em;
-        margin: 5px 0 22px 0;
-        display: inline-block;
-        border: none;
-        background: #f1f1f1;
-      }
-
-      input[type="text"]:focus,
-      input[type="password"]:focus {
-        background-color: #ddd;
-        outline: none;
-      }
-      /* Overwrite default styles of hr */
-
-      hr {
-        border: 1px solid #f1f1f1;
-        margin-bottom: 25px;
-      }
-      /* Set a style for the submit button */
-
-      .registerbtn {
-        background-color: #fc4c4c;
-        border-radius: 1em;
-        color: white;
-        padding: 16px 20px;
-        margin: 8px 0;
-        cursor: pointer;
-        width: 100%;
-        opacity: 0.9;
-        border: none;
-      }
-
-      .registerbtn:hover {
-        opacity: 1;
-      }
-      /* Add a blue text color to links */
-
-      a {
-        color: dodgerblue;
-      }
-      /* Set a grey background color and center the text of the "sign in" section */
-
-      .signin {
-        background-color: #f1f1f1;
-        text-align: center;
-      }
-
-      nav {
-        width: 100%;
-        background: linear-gradient(
-          90deg,
-          rgba(131, 58, 180, 1) 0%,
-          rgba(253, 29, 29, 1) 50%,
-          rgba(252, 176, 69, 1) 100%
-        );
-      }
-
-      .Nav-Title {
-        display: inline-block;
-        padding: 1em 0;
-        width: auto;
-        margin: 0 2em;
-        font-weight: bold;
-        font-size: 2em;
-      }
-
-      .Nav-text {
-        display: inline-block;
-        margin: 0 2em;
-      }
-
-      .Nav-text > a {
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.5em;
-        margin: 0 3em;
-        color: black;
-      }
-
-      .Nav-text > a:hover {
-        background-color: black;
-        color: white;
-      }
-
-      /* Pagina */
-
-      .dragDiv {
-        background-color: #fc4c4c;
-      }
-
-      .player,
-      .players,
-      .board,
-      .dragDiv {
-        display: inline-block;
-      }
-
-      .players {
-        background-color: lightgray;
-        width: 35%;
-        height: 700px;
-        vertical-align: top;
-        overflow: auto;
-      }
-
-      .board {
-        background-image: url(https://img.freepik.com/vector-gratis/campo-futbol-shock-jugar-futbol_68708-644.jpg?size=626&ext=jpg);
-        width: 60%;
-        height: 80%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: absolute;
-        padding: 2em 8em;
-        z-index: 1;
-      }
-
-      .board > .dragDiv {
-        width: 20%;
-        height: 100%;
-        margin: 0em 1em 0em 0em;
-        z-index: 2;
-        border: 0.2em dotted red;
-        background-color: rgba(0, 0, 255, 0);
-        vertical-align: middle;
-        max-height: 100%;
-      }
-
-      #goalkeeper > .player {
-        vertical-align: middle;
-      }
-
-      .board > .dragDiv > .player > .display-player {
-        display: none;
-      }
-
-      .board > .dragDiv:hover {
-        background-color: rgba(255, 0, 0, 0.123);
-        border: 0.2em solid red;
-      }
-
-      .display-player > p {
-        margin: auto;
-      }
-      /* Pop up */
-
-      /* Style the Image Used to Trigger the Modal */
-      .myImg {
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
-        width: 100%;
-      }
-
-      .board > .dragDiv > .player > .myImg {
-        width: 90%;
-        vertical-align: middle;
-      }
-
-      .hide {
-        display: none;
-      }
-      .show {
-        display: block;
-      }
-
-      .drag-over {
-        border: dashed 3px red;
-      }
-
-      .drag-over {
-        border: dashed 3px red;
-      }
-
-      .myImg:hover {
-        opacity: 0.7;
-      }
-
-      .titulares{
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: space-around;
-      }
-
-      #playerColumnTeam{
-        width: 100%;
-        background-color: yellow;
-        min-width: 100%;
-        min-height: 50%;
-      }
-
-      /* The Modal (background) */
-      .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0); /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
-      }
-
-      /* Modal Content (Image) */
-      .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-      }
-
-      /* Caption of Modal Image (Image Text) - Same Width as the Image */
-      #caption {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
-        text-align: center;
-        color: #ccc;
-        padding: 10px 0;
-        height: 150px;
-      }
-
-      /* Add Animation - Zoom in the Modal */
-      .modal-content,
-      #caption {
-        animation-name: zoom;
-        animation-duration: 0.6s;
-      }
-
-      @keyframes zoom {
-        from {
-          transform: scale(0);
-        }
-        to {
-          transform: scale(1);
-        }
-      }
-
-      /* The Close Button */
-      .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-      }
-
-      .close:hover,
-      .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      /* 100% Image Width on Smaller Screens */
-      @media only screen and (max-width: 700px) {
-        .modal-content {
-          width: 100%;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
+<body>
     <nav>
-      <div class="Nav-Title">Football Manager</div>
-      <div class="Nav-text">
-        <a href="my-team.html">My team</a>
-        <a href="show-data.html">Data</a>
-      </div>
+        <div class="Nav-Title">Football Manager</div>
+        <div class="Nav-text">
+            <a href="my-team.html">My team</a>
+            <a href="show-data.html">Data</a>
+        </div>
     </nav>
 
     <div class="players">
-      <h2 class="especial-title">Jugadores disponibles</h2>
-      <div class="dragDiv" id="playerColumnTeam"></div>
+        <h2 class="especial-title">Jugadores disponibles</h2>
+        <div class="dragDiv" id="playerColumnTeam"></div>
     </div>
 
     <div class="board">
-      <div class="dragDiv titulares" id="goalkeeper"></div>
+        <div class="dragDiv titulares" id="goalkeeper"></div>
 
-      <div class="dragDiv titulares" id="defenders"></div>
+        <div class="dragDiv titulares" id="defenders"></div>
 
-      <div class="dragDiv titulares" id="midfielders"></div>
+        <div class="dragDiv titulares" id="midfielders"></div>
 
-      <div class="dragDiv titulares" id="attackers"></div>
+        <div class="dragDiv titulares" id="attackers"></div>
     </div>
-  </body>
+</body>
+
 </html>
