@@ -462,8 +462,8 @@ function dragEnter(e) {
   function fullTeam (aoPlayersTitulars) {
     let nSumaTotal = aoPlayersTitulars.goaalkeeper.length + aoPlayersTitulars.defenders.length + aoPlayersTitulars.midfielders.length + aoPlayersTitulars.attackers.length;
     if (nSumaTotal > 11) {
-      alert("Your Team is full")
-      return false;
+      alert("Your Team have more than 12 players")
+      return true;
     } else {
       return true;
     }
