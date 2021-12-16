@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
 
   // let oPlayers = PlayersFCB
 
-  let oTeams = await getTeams(sIdTeam)
+  let oTeams = await getTeams()
 
   printTeam(oTeams);
 
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
 
   const onTeamSelect = async (sIdTeam) => {
     if (sIdTeam) {
-      
+      let oPlayers = await getTeams()
       printPlayers(oPlayers.response);
       localStorage.setItem("currentTeam", JSON.stringify(oPlayers.response));
     }
