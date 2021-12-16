@@ -19,7 +19,7 @@ export const setUserInfo = async (oParams) => {
     }
 }
 
-export const getTeams = async (sIdTeam) => {
+export const getTeams = async () => {
   await fetch("https://v3.football.api-sports.io/teams?country=spain&league=140&season=2020", requestOptions)
     .then(response => response.text())
     .then(result => {
