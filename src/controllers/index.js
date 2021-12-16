@@ -1,4 +1,5 @@
 import {setUserInfo} from '../model/modelHandler'
+import css from '../css/index.css';
 
 document.addEventListener('submit', async (oEvent) => {
 

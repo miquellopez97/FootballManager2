@@ -20,11 +20,20 @@ export const setUserInfo = async (oParams) => {
 }
 
 export const getTeams = async (sIdTeam) => {
+  await fetch("https://v3.football.api-sports.io/teams?country=spain&league=140&season=2020", requestOptions)
+    .then(response => response.text())
+    .then(result => {
+      let aoParsedResponse = JSON.parse(result)
+      localStorage.setItem('currentTeam', JSON.stringify(aoParsedResponse.response))
+      return aoParsedResponse})
+     .catch(error => console.log('error', error));
+}
+
+export const getPlayer = async (sIdTeam) => {
     await fetch("https://v3.football.api-sports.io/players?team="+ sIdTeam + "&league=140&season=2020", requestOptions)
       .then(response => response.text())
       .then(result => {
         let aoParsedResponse = JSON.parse(result)
-        localStorage.setItem('currentTeam', JSON.stringify(aoParsedResponse.response))
         return aoParsedResponse})
        .catch(error => console.log('error', error));
 }

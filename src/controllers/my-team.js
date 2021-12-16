@@ -28,6 +28,8 @@
           </div> */
 }
 
+import '../css/my-team.css';
+
 document.addEventListener("DOMContentLoaded", async (oEvent) => {
   //Toddo : borrar nodos hijos
   let aoTitulares = JSON.parse(localStorage.getItem("titulares"))

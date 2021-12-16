@@ -1,16 +1,17 @@
 import PlayersFCB from '../mock/TeamPlayer.json'
 import TeamsEspanya from '../mock/teams.json'
 
-import {getTeams} from '../model/modelHandler'
+import {getTeams, getPlayer} from '../model/modelHandler'
+import '../css/show-data.css';
 
 document.addEventListener("DOMContentLoaded", async (oEvent) => {
 
   // Load Mocks
-  let oTeams = TeamsEspanya
+  // let oTeams = TeamsEspanya
 
-  let oPlayers = PlayersFCB
+  // let oPlayers = PlayersFCB
 
-  // let oTeams = await getTeams(sIdTeam)
+  let oTeams = await getTeams(sIdTeam)
 
   printTeam(oTeams);
 
@@ -233,13 +234,6 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
     getInfoPlayer(nIdPlayer.toString(), [oFavourtiePlayer]);
 
   };
-
-  // await fetch("https://v3.football.api-sports.io/teams?country=spain&league=140&season=2020", requestOptions)
-  //     .then(response => response.text())
-  //     .then(result => console.log(result))
-  //     .catch(error => console.log('error', error));
-
-  //<div class="team"><img src="http://as01.epimg.net/img/comunes/fotos/fichas/equipos/large/3.png"><div class="display-team">Futbol Club Barcelona</div></div>
 });
 
 const printTeam = (oTeams) => {
