@@ -1,3 +1,6 @@
+import "../css/my-team.css"
+import "../css/navBar.css"
+
 // // Get the modal
 // var modal = document.getElementById("myModal");
 
@@ -20,13 +23,13 @@
 //     modal.style.display = "none";
 // }
 
-{
+//{
   /* <div id="myModal" class="modal">
               <span class="close">X</span>
               <img class="modal-content" id="img${i}">
               <div id="caption"></div>
           </div> */
-}
+//}
 
 import '../css/my-team.css';
 

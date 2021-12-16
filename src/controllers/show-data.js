@@ -1,5 +1,7 @@
 import PlayersFCB from '../mock/TeamPlayer.json'
 import TeamsEspanya from '../mock/teams.json'
+import "../css/my-team.css"
+import "../css/navBar.css"
 
 import {getTeams, getPlayer} from '../model/modelHandler'
 import '../css/show-data.css';
@@ -7,13 +9,10 @@ import '../css/show-data.css';
 document.addEventListener("DOMContentLoaded", async (oEvent) => {
 
   // Load Mocks
-  // let oTeams = TeamsEspanya
+  let oTeams = TeamsEspanya
 
-  // let oPlayers = PlayersFCB
-
-  let oTeams = await getTeams()
-
-  printTeam(oTeams);
+  let oPlayers = PlayersFCB
+  getTeamsCall(oTeams);
 
   let teamsDiv = document.getElementsByClassName("team");
 
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async (oEvent) => {
 
   const onTeamSelect = async (sIdTeam) => {
     if (sIdTeam) {
-      let oPlayers = await getTeams()
+      //let oPlayers = await getPlayer()
       printPlayers(oPlayers.response);
       localStorage.setItem("currentTeam", JSON.stringify(oPlayers.response));
     }
@@ -246,3 +245,8 @@ const printTeam = (oTeams) => {
     );
   }
 };
+
+const getTeamsCall = async (oTeams) => {
+  //let oTeams = await getTeams();
+  printTeam(oTeams);
+}

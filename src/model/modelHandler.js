@@ -26,7 +26,7 @@ export const getTeams = async () => {
       let aoParsedResponse = JSON.parse(result)
       localStorage.setItem('currentTeam', JSON.stringify(aoParsedResponse.response))
       return aoParsedResponse})
-     .catch(error => console.log('error', error));
+    .catch(error => console.log('error', error));
 }
 
 export const getPlayer = async (sIdTeam) => {
@@ -35,5 +35,5 @@ export const getPlayer = async (sIdTeam) => {
       .then(result => {
         let aoParsedResponse = JSON.parse(result)
         return aoParsedResponse})
-       .catch(error => console.log('error', error));
+      .catch(error => console.log('error', error));
 }
